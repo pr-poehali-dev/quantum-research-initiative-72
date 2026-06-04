@@ -14,7 +14,7 @@ type FieldErrors = {
   message?: string
 }
 
-export function ContactForm() {
+export function ContactForm({ dark = false }: { dark?: boolean }) {
   const { toast } = useToast()
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [isVisible, setIsVisible] = useState(false)
@@ -126,7 +126,8 @@ export function ContactForm() {
     <div
       ref={formRef}
       className={cn(
-        "mx-auto max-w-md rounded-lg bg-white p-6 shadow-lg transition-all duration-1000 ease-out",
+        "mx-auto max-w-md rounded-lg p-6 shadow-lg transition-all duration-1000 ease-out",
+        dark ? "bg-transparent" : "bg-white",
         isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10",
       )}
     >
@@ -142,10 +143,10 @@ export function ContactForm() {
 
       <form onSubmit={handleSubmit} className="space-y-6" noValidate>
         <div className="space-y-2">
-          <Label htmlFor="name" className="flex items-center justify-between">
+          <Label htmlFor="name" className={cn("flex items-center justify-between", dark && "text-gray-200")}>
             Ваше имя
             {errors.name && (
-              <span className="text-xs font-normal text-red-500 flex items-center">
+              <span className="text-xs font-normal text-red-400 flex items-center">
                 <AlertCircle className="h-3 w-3 mr-1" />
                 {errors.name}
               </span>
@@ -156,22 +157,20 @@ export function ContactForm() {
             name="name"
             value={formData.name}
             onChange={handleChange}
-            className={cn(errors.name && "border-red-500 focus-visible:ring-red-500")}
+            className={cn(
+              errors.name && "border-red-500 focus-visible:ring-red-500",
+              dark && "bg-white/10 border-white/20 text-white placeholder:text-gray-500 focus-visible:ring-white/30"
+            )}
             aria-invalid={!!errors.name}
             aria-describedby={errors.name ? "name-error" : undefined}
           />
-          {errors.name && (
-            <span id="name-error" className="sr-only">
-              {errors.name}
-            </span>
-          )}
         </div>
 
         <div className="space-y-2">
-          <Label htmlFor="email" className="flex items-center justify-between">
+          <Label htmlFor="email" className={cn("flex items-center justify-between", dark && "text-gray-200")}>
             Ваш email
             {errors.email && (
-              <span className="text-xs font-normal text-red-500 flex items-center">
+              <span className="text-xs font-normal text-red-400 flex items-center">
                 <AlertCircle className="h-3 w-3 mr-1" />
                 {errors.email}
               </span>
@@ -183,27 +182,32 @@ export function ContactForm() {
             type="email"
             value={formData.email}
             onChange={handleChange}
-            className={cn(errors.email && "border-red-500 focus-visible:ring-red-500")}
+            className={cn(
+              errors.email && "border-red-500 focus-visible:ring-red-500",
+              dark && "bg-white/10 border-white/20 text-white placeholder:text-gray-500 focus-visible:ring-white/30"
+            )}
             aria-invalid={!!errors.email}
             aria-describedby={errors.email ? "email-error" : undefined}
           />
-          {errors.email && (
-            <span id="email-error" className="sr-only">
-              {errors.email}
-            </span>
-          )}
         </div>
 
         <div className="space-y-2">
-          <Label htmlFor="phone">Телефон (необязательно)</Label>
-          <Input id="phone" name="phone" type="tel" value={formData.phone} onChange={handleChange} />
+          <Label htmlFor="phone" className={cn(dark && "text-gray-200")}>Телефон (необязательно)</Label>
+          <Input
+            id="phone"
+            name="phone"
+            type="tel"
+            value={formData.phone}
+            onChange={handleChange}
+            className={cn(dark && "bg-white/10 border-white/20 text-white placeholder:text-gray-500 focus-visible:ring-white/30")}
+          />
         </div>
 
         <div className="space-y-2">
-          <Label htmlFor="message" className="flex items-center justify-between">
+          <Label htmlFor="message" className={cn("flex items-center justify-between", dark && "text-gray-200")}>
             Сообщение
             {errors.message && (
-              <span className="text-xs font-normal text-red-500 flex items-center">
+              <span className="text-xs font-normal text-red-400 flex items-center">
                 <AlertCircle className="h-3 w-3 mr-1" />
                 {errors.message}
               </span>
@@ -214,21 +218,27 @@ export function ContactForm() {
             name="message"
             value={formData.message}
             onChange={handleChange}
-            placeholder="Напишите ваше сообщение..."
-            className={cn("min-h-[120px]", errors.message && "border-red-500 focus-visible:ring-red-500")}
+            placeholder="Опишите вашу задачу..."
+            className={cn(
+              "min-h-[120px]",
+              errors.message && "border-red-500 focus-visible:ring-red-500",
+              dark && "bg-white/10 border-white/20 text-white placeholder:text-gray-500 focus-visible:ring-white/30"
+            )}
             aria-invalid={!!errors.message}
             aria-describedby={errors.message ? "message-error" : undefined}
           />
-          {errors.message && (
-            <span id="message-error" className="sr-only">
-              {errors.message}
-            </span>
-          )}
         </div>
 
-        <Button type="submit" className="w-full" disabled={isSubmitting}>
+        <Button
+          type="submit"
+          className={cn(
+            "w-full",
+            dark && "bg-white text-black hover:bg-gray-100 border-0"
+          )}
+          disabled={isSubmitting}
+        >
           <Rocket className="mr-2 h-4 w-4" />
-          {isSubmitting ? "Отправка..." : "Отправить"}
+          {isSubmitting ? "Отправка..." : "Отправить заявку"}
         </Button>
       </form>
     </div>
