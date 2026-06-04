@@ -107,23 +107,23 @@ export function ServicesSection({ sectionRef }: ServicesSectionProps) {
         </div>
       </section>
 
-      <section id="cases" className="py-20 text-white" style={{ backgroundColor: "#060d1f" }}>
+      <section id="cases" className="py-20 bg-black text-white">
         <div className="container mx-auto px-4">
           <h2 className="mb-12 text-center text-3xl font-bold font-heading">Кейсы</h2>
           <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="border border-white/10 rounded-lg p-6 flex flex-col gap-4 hover:border-white/30 transition-colors" style={{ backgroundColor: "#0d1a3a" }}>
+            <div className="bg-gray-900 border border-gray-800 rounded-lg p-6 flex flex-col gap-4 hover:border-gray-600 transition-colors">
               <div className="text-4xl font-bold text-white">−62%</div>
               <h3 className="text-lg font-semibold font-heading">Автоматизация обработки заявок</h3>
               <p className="text-gray-400 text-sm flex-1">Внедрили AI-классификатор входящих обращений для дистрибьюторской компании. Время обработки заявки сократилось с 8 минут до 3, нагрузка на менеджеров упала вдвое.</p>
               <div className="text-xs text-gray-600 uppercase tracking-wide">Ритейл · 3 месяца</div>
             </div>
-            <div className="border border-white/10 rounded-lg p-6 flex flex-col gap-4 hover:border-white/30 transition-colors" style={{ backgroundColor: "#0d1a3a" }}>
+            <div className="bg-gray-900 border border-gray-800 rounded-lg p-6 flex flex-col gap-4 hover:border-gray-600 transition-colors">
               <div className="text-4xl font-bold text-white">×3.4</div>
               <h3 className="text-lg font-semibold font-heading">Рост конверсии через AI-рекомендации</h3>
               <p className="text-gray-400 text-sm flex-1">Разработали персональную рекомендательную систему для e-commerce платформы. Средний чек вырос на 34%, конверсия в повторную покупку — в 3.4 раза.</p>
               <div className="text-xs text-gray-600 uppercase tracking-wide">E-commerce · 2 месяца</div>
             </div>
-            <div className="border border-white/10 rounded-lg p-6 flex flex-col gap-4 hover:border-white/30 transition-colors" style={{ backgroundColor: "#0d1a3a" }}>
+            <div className="bg-gray-900 border border-gray-800 rounded-lg p-6 flex flex-col gap-4 hover:border-gray-600 transition-colors">
               <div className="text-4xl font-bold text-white">−80%</div>
               <h3 className="text-lg font-semibold font-heading">AI-аналитика для производства</h3>
               <p className="text-gray-400 text-sm flex-1">Построили систему прогнозирования брака на производственной линии. Количество дефектных изделий снизилось на 80%, экономия — 4.2 млн руб. в год.</p>

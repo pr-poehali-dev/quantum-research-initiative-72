@@ -19,7 +19,7 @@ export function HeroSection({
   scrollToContact,
 }: HeroSectionProps) {
   return (
-    <section className="relative w-full overflow-hidden" style={{ ...heroStyle, backgroundColor: "#060d1f" }}>
+    <section className="relative w-full overflow-hidden bg-black" style={heroStyle}>
       <div className="absolute top-6 right-6 z-10 flex space-x-3">
         <Button
           onClick={scrollToContact}

@@ -84,20 +84,7 @@ export function StarField({ blurAmount = 0 }: StarFieldProps) {
     const drawStars = () => {
       if (!ctx || !canvas) return
 
-      // Deep navy sky background
-      ctx.fillStyle = "#060d1f"
-      ctx.fillRect(0, 0, canvas.width, canvas.height)
-
-      // Subtle nebula glow in the center
-      const gradient = ctx.createRadialGradient(
-        canvas.width * 0.5, canvas.height * 0.4, 0,
-        canvas.width * 0.5, canvas.height * 0.4, canvas.width * 0.6
-      )
-      gradient.addColorStop(0, "rgba(30, 50, 120, 0.18)")
-      gradient.addColorStop(0.5, "rgba(15, 25, 70, 0.10)")
-      gradient.addColorStop(1, "rgba(6, 13, 31, 0)")
-      ctx.fillStyle = gradient
-      ctx.fillRect(0, 0, canvas.width, canvas.height)
+      ctx.clearRect(0, 0, canvas.width, canvas.height)
 
       starsRef.current.forEach((star) => {
         // Update star blinking
