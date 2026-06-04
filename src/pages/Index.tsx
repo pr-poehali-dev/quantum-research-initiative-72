@@ -1,10 +1,13 @@
 import { useState, useEffect, useRef } from "react"
 import { ChatbotModal } from "@/components/ChatbotModal"
 import { HeroSection } from "@/components/HeroSection"
+import { BenefitsSection } from "@/components/BenefitsSection"
+import { ContactCTA } from "@/components/ContactCTA"
 import { AboutSection } from "@/components/AboutSection"
 import { ServicesSection } from "@/components/ServicesSection"
-import { BenefitsAndContactSection } from "@/components/BenefitsAndContactSection"
-import { ExpertiseSection } from "@/components/ExpertiseSection"
+import { ProjectsSection } from "@/components/ProjectsSection"
+import { TrustSection } from "@/components/TrustSection"
+import { FooterSection } from "@/components/FooterSection"
 
 export default function Index() {
   const [blurAmount, setBlurAmount] = useState(0)
@@ -17,41 +20,32 @@ export default function Index() {
   const lastScrollRef = useRef(0)
   const ticking = useRef(false)
 
-  // Store initial height on first render
   useEffect(() => {
     if (initialHeight === 0) {
       setInitialHeight(window.innerHeight)
     }
   }, [initialHeight])
 
-  // Handle scroll events to calculate blur amount
   useEffect(() => {
     const handleScroll = () => {
       scrollRef.current = window.scrollY
-
       if (!ticking.current) {
         window.requestAnimationFrame(() => {
           const maxBlur = 8
           const triggerHeight = initialHeight * 1.2
           const newBlurAmount = Math.min(maxBlur, (scrollRef.current / triggerHeight) * maxBlur)
-
           setBlurAmount(newBlurAmount)
-
           lastScrollRef.current = scrollRef.current
           ticking.current = false
         })
-
         ticking.current = true
       }
     }
-
     window.addEventListener("scroll", handleScroll, { passive: true })
     return () => window.removeEventListener("scroll", handleScroll)
   }, [initialHeight])
 
-  // Calculate scale factor based on blur amount
   const scaleFactor = 1 + blurAmount / 16
-
   const warpSpeedStyle = {
     transform: `scale(${scaleFactor})`,
     transition: "transform 0.2s ease-out",
@@ -71,6 +65,7 @@ export default function Index() {
 
   return (
     <div className="min-h-screen">
+      {/* 1. Первый экран */}
       <HeroSection
         heroStyle={heroStyle}
         warpSpeedStyle={warpSpeedStyle}
@@ -79,17 +74,45 @@ export default function Index() {
         scrollToContact={scrollToContact}
       />
 
+      {/* 2. Сколько AI экономит */}
+      <BenefitsSection />
+
+      {/* 3. Форма заявки */}
+      <ContactCTA
+        sectionRef={contactSectionRef}
+        title="Хотите узнать, сколько сэкономит AI именно вашему бизнесу?"
+        subtitle="Оставьте заявку — проведём бесплатный аудит и покажем потенциал экономии"
+      />
+
+      {/* 4. О нас */}
       <AboutSection
         sectionRef={aboutSectionRef}
         scrollToContact={scrollToContact}
         openChatbot={() => setIsChatbotOpen(true)}
       />
 
+      {/* 5. AI-решения + 6. Кейсы */}
       <ServicesSection sectionRef={servicesSectionRef} />
 
-      <ExpertiseSection />
+      {/* 7. Наши проекты */}
+      <ProjectsSection />
 
-      <BenefitsAndContactSection contactSectionRef={contactSectionRef} />
+      {/* 8. Форма заявки */}
+      <ContactCTA
+        title="Обсудим ваш проект?"
+        subtitle="Расскажите о задаче — предложим решение и рассчитаем стоимость бесплатно"
+      />
+
+      {/* 9. Почему нам доверяют */}
+      <TrustSection />
+
+      {/* 10. Форма заявки */}
+      <ContactCTA
+        title="Готовы начать?"
+        subtitle="Оставьте заявку — свяжемся в течение часа и ответим на все вопросы"
+      />
+
+      <FooterSection />
 
       <ChatbotModal isOpen={isChatbotOpen} onClose={() => setIsChatbotOpen(false)} />
     </div>
