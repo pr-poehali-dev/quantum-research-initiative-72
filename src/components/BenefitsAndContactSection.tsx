@@ -99,9 +99,9 @@ export function BenefitsAndContactSection({
       </section>
 
       {/* CTA + Contact Form in hero style */}
-      <section ref={contactSectionRef} id="contact" className="relative min-h-screen bg-black text-white overflow-hidden flex items-center">
+      <section ref={contactSectionRef} id="contact" className="relative min-h-screen text-white overflow-hidden flex items-center" style={{ backgroundColor: "#060d1f" }}>
         <StarField blurAmount={0} />
-        <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-transparent to-black/80" />
+        <div className="absolute inset-0 bg-gradient-to-b from-[#060d1f]/60 via-transparent to-[#060d1f]/80" />
         <div className="relative z-10 container mx-auto px-4 py-24">
           <div className="max-w-2xl mx-auto text-center mb-12">
             <h2
@@ -130,7 +130,7 @@ export function BenefitsAndContactSection({
       </section>
 
       {/* Footer */}
-      <footer className="bg-black border-t border-gray-800 py-8 text-center">
+      <footer className="border-t border-white/10 py-8 text-center" style={{ backgroundColor: "#060d1f" }}>
         <div className="container mx-auto px-4">
           <img
             src="https://siberian.pro/wp-content/uploads/2022/03/logo-2.svg"
