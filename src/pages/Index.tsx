@@ -4,6 +4,7 @@ import { HeroSection } from "@/components/HeroSection"
 import { AboutSection } from "@/components/AboutSection"
 import { ServicesSection } from "@/components/ServicesSection"
 import { BenefitsAndContactSection } from "@/components/BenefitsAndContactSection"
+import { ExpertiseSection } from "@/components/ExpertiseSection"
 
 export default function Index() {
   const [blurAmount, setBlurAmount] = useState(0)
@@ -85,6 +86,8 @@ export default function Index() {
       />
 
       <ServicesSection sectionRef={servicesSectionRef} />
+
+      <ExpertiseSection />
 
       <BenefitsAndContactSection contactSectionRef={contactSectionRef} />
 
