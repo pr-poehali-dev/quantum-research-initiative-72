@@ -230,9 +230,11 @@ export default function Index() {
                 background: "radial-gradient(circle, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.6) 50%, rgba(0,0,0,0.3) 100%)",
               }}
             >
-              <h1 className="text-4xl font-bold text-white md:text-6xl font-heading">
-                siberian.pro
-              </h1>
+              <img
+                src="https://siberian.pro/wp-content/uploads/2022/03/logo-2.svg"
+                alt="siberian.pro"
+                className="h-16 md:h-20 mx-auto mb-2 invert"
+              />
               <p className="mt-4 text-lg text-gray-300 md:text-xl px-4 max-w-xs mx-auto md:max-w-none">
                 AI-решения для вашего бизнеса
               </p>
@@ -377,6 +379,32 @@ export default function Index() {
                   Создаём чат-боты, рекомендательные системы и кастомные AI-инструменты под задачи вашей компании.
                 </p>
               </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="cases" className="py-20 bg-black text-white">
+        <div className="container mx-auto px-4">
+          <h2 className="mb-12 text-center text-3xl font-bold font-heading">Кейсы</h2>
+          <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div className="bg-gray-900 border border-gray-800 rounded-lg p-6 flex flex-col gap-4 hover:border-gray-600 transition-colors">
+              <div className="text-4xl font-bold text-white">−62%</div>
+              <h3 className="text-lg font-semibold font-heading">Автоматизация обработки заявок</h3>
+              <p className="text-gray-400 text-sm flex-1">Внедрили AI-классификатор входящих обращений для дистрибьюторской компании. Время обработки заявки сократилось с 8 минут до 3, нагрузка на менеджеров упала вдвое.</p>
+              <div className="text-xs text-gray-600 uppercase tracking-wide">Ритейл · 3 месяца</div>
+            </div>
+            <div className="bg-gray-900 border border-gray-800 rounded-lg p-6 flex flex-col gap-4 hover:border-gray-600 transition-colors">
+              <div className="text-4xl font-bold text-white">×3.4</div>
+              <h3 className="text-lg font-semibold font-heading">Рост конверсии через AI-рекомендации</h3>
+              <p className="text-gray-400 text-sm flex-1">Разработали персональную рекомендательную систему для e-commerce платформы. Средний чек вырос на 34%, конверсия в повторную покупку — в 3.4 раза.</p>
+              <div className="text-xs text-gray-600 uppercase tracking-wide">E-commerce · 2 месяца</div>
+            </div>
+            <div className="bg-gray-900 border border-gray-800 rounded-lg p-6 flex flex-col gap-4 hover:border-gray-600 transition-colors">
+              <div className="text-4xl font-bold text-white">−80%</div>
+              <h3 className="text-lg font-semibold font-heading">AI-аналитика для производства</h3>
+              <p className="text-gray-400 text-sm flex-1">Построили систему прогнозирования брака на производственной линии. Количество дефектных изделий снизилось на 80%, экономия — 4.2 млн руб. в год.</p>
+              <div className="text-xs text-gray-600 uppercase tracking-wide">Производство · 4 месяца</div>
             </div>
           </div>
         </div>
