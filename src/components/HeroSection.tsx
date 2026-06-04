@@ -31,7 +31,19 @@ export function HeroSection({
         </Button>
       </div>
 
-      <div className="absolute inset-0" style={warpSpeedStyle}>
+      {/* AI Business background image */}
+      <div className="absolute inset-0">
+        <img
+          src="https://cdn.poehali.dev/projects/0ef603ce-ab0b-4fc2-a2bf-1d089eeb585a/files/129493e8-1c6f-4223-b22c-e3525d750e18.jpg"
+          alt=""
+          className="w-full h-full object-cover"
+          aria-hidden="true"
+        />
+        <div className="absolute inset-0 bg-black/55" />
+      </div>
+
+      {/* Stars overlay */}
+      <div className="absolute inset-0 opacity-40" style={warpSpeedStyle}>
         <StarField blurAmount={blurAmount} />
       </div>
       <div className="absolute inset-0 flex flex-col items-center justify-center">
