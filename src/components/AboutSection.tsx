@@ -1,3 +1,4 @@
+import { useState, useEffect, useRef } from "react"
 import { Brain, BotIcon as Robot } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { cn } from "@/lib/utils"
@@ -5,19 +6,32 @@ import type { RefObject } from "react"
 
 interface AboutSectionProps {
   sectionRef: RefObject<HTMLElement>
-  contentRef: RefObject<HTMLDivElement>
-  isVisible: boolean
   scrollToContact: () => void
   openChatbot: () => void
 }
 
 export function AboutSection({
   sectionRef,
-  contentRef,
-  isVisible,
   scrollToContact,
   openChatbot,
 }: AboutSectionProps) {
+  const [isVisible, setIsVisible] = useState(false)
+  const contentRef = useRef<HTMLDivElement>(null)
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true)
+          observer.disconnect()
+        }
+      },
+      { threshold: 0.1 },
+    )
+    if (contentRef.current) observer.observe(contentRef.current)
+    return () => observer.disconnect()
+  }, [])
+
   return (
     <section ref={sectionRef} id="about" className="py-20 bg-gradient-to-b from-black to-gray-900 text-white">
       <div className="container mx-auto px-4">

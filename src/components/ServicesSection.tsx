@@ -1,22 +1,47 @@
+import { useState, useEffect, useRef } from "react"
 import { Brain, Zap, BarChart3, Settings2 } from "lucide-react"
 import { cn } from "@/lib/utils"
 import type { RefObject } from "react"
 
 interface ServicesSectionProps {
   sectionRef: RefObject<HTMLElement>
-  contentRef: RefObject<HTMLDivElement>
-  titleRef: RefObject<HTMLHeadingElement>
-  isContentVisible: boolean
-  isTitleVisible: boolean
 }
 
-export function ServicesSection({
-  sectionRef,
-  contentRef,
-  titleRef,
-  isContentVisible,
-  isTitleVisible,
-}: ServicesSectionProps) {
+export function ServicesSection({ sectionRef }: ServicesSectionProps) {
+  const [isContentVisible, setIsContentVisible] = useState(false)
+  const [isTitleVisible, setIsTitleVisible] = useState(false)
+  const contentRef = useRef<HTMLDivElement>(null)
+  const titleRef = useRef<HTMLHeadingElement>(null)
+
+  useEffect(() => {
+    const titleObserver = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsTitleVisible(true)
+          titleObserver.disconnect()
+        }
+      },
+      { threshold: 0.1 },
+    )
+    if (titleRef.current) titleObserver.observe(titleRef.current)
+
+    const contentObserver = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsContentVisible(true)
+          contentObserver.disconnect()
+        }
+      },
+      { threshold: 0.1 },
+    )
+    if (contentRef.current) contentObserver.observe(contentRef.current)
+
+    return () => {
+      titleObserver.disconnect()
+      contentObserver.disconnect()
+    }
+  }, [])
+
   return (
     <>
       <section ref={sectionRef} id="services" className="py-20 bg-gray-900 text-white">

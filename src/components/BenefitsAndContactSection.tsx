@@ -1,3 +1,4 @@
+import { useState, useEffect, useRef } from "react"
 import { StarField } from "@/components/StarField"
 import { ContactForm } from "@/components/ContactForm"
 import { cn } from "@/lib/utils"
@@ -5,15 +6,28 @@ import type { RefObject } from "react"
 
 interface BenefitsAndContactSectionProps {
   contactSectionRef: RefObject<HTMLElement>
-  headingRef: RefObject<HTMLHeadingElement>
-  isHeadingVisible: boolean
 }
 
 export function BenefitsAndContactSection({
   contactSectionRef,
-  headingRef,
-  isHeadingVisible,
 }: BenefitsAndContactSectionProps) {
+  const [isHeadingVisible, setIsHeadingVisible] = useState(false)
+  const headingRef = useRef<HTMLHeadingElement>(null)
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsHeadingVisible(true)
+          observer.disconnect()
+        }
+      },
+      { threshold: 0.1 },
+    )
+    if (headingRef.current) observer.observe(headingRef.current)
+    return () => observer.disconnect()
+  }, [])
+
   return (
     <>
       {/* Benefits Section */}
