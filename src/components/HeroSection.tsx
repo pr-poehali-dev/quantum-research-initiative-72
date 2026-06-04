@@ -37,7 +37,7 @@ export function HeroSection({
       <div className="absolute inset-0 flex flex-col items-center justify-center">
         <div className="text-center">
           <div
-            className="backdrop-blur-sm px-8 py-10 rounded-2xl inline-block relative"
+            className="backdrop-blur-sm px-8 py-10 rounded-2xl relative flex flex-col items-center"
             style={{
               background: "radial-gradient(circle, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.6) 60%, rgba(0,0,0,0.2) 100%)",
             }}
@@ -45,9 +45,9 @@ export function HeroSection({
             <img
               src="https://siberian.pro/wp-content/uploads/2022/03/logo-2.svg"
               alt="siberian.pro"
-              className="h-24 md:h-36 mx-auto mb-6 invert"
+              className="h-24 md:h-36 mb-6 invert block"
             />
-            <h1 className="text-2xl md:text-4xl lg:text-5xl font-black text-white leading-tight tracking-tight max-w-2xl mx-auto px-2">
+            <h1 className="text-2xl md:text-4xl lg:text-5xl font-black text-white leading-tight tracking-tight max-w-2xl text-center px-2">
               SIBERIAN.PRO —{" "}
               <span className="block mt-1">
                 Заставим искусственный интеллект повысить рентабельность вашего бизнеса!
